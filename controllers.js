@@ -25,16 +25,13 @@ weatherApp.controller('forecastController', [
 
     $scope.days = $routeParams.days || '2';
 
-    $scope.getWeather = async function () {
-      $scope.weatherResult = await weatherService.GetWeather(
-        $scope.city,
-        $scope.days
-      );
+    $scope.weatherResult = null;
+    console.log($scope.weatherResult);
 
+    weatherService.GetWeather($scope.city, $scope.days).then((res) => {
+      $scope.weatherResult = res;
       console.log($scope.weatherResult);
-    };
-
-    $scope.getWeather();
+    });
 
     $scope.convertToCelsius = function (degK) {
       return (degK - 273.15).toFixed(2);
