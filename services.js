@@ -7,9 +7,7 @@ weatherApp.service('weatherService', [
   '$http',
   function ($http) {
     this.GetWeather = async function (city, days) {
-      var res = null;
-
-      res = await $http({
+      var res = await $http({
         method: 'GET',
         url: `https://community-open-weather-map.p.rapidapi.com/find?q=${city}&cnt=${days}`,
         headers: {
