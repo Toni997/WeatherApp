@@ -1,14 +1,11 @@
 // DIRECTIVES
-weatherApp.directive('weatherReport', function () {
+app.directive('singlePost', function () {
   return {
     restrict: 'E',
-    templateUrl: 'directives/weatherReport.htm',
+    templateUrl: 'directives/SinglePost.htm',
     replace: true,
     scope: {
-      weatherDay: '=',
-      convertToStandard: '&',
-      convertToDate: '&',
-      dateFormat: '@',
+      post: '=',
     },
   };
 });

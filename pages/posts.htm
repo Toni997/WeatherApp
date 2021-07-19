@@ -1,0 +1,15 @@
+<h1>All posts</h1>
+<hr />
+<!-- Days: 
+<a href="#/posts/2" ng-class="{ 'bg-primary' : days === '2'}">2</a>
+| <a href="#/posts/5" ng-class="{ 'bg-primary' : days === '5'}">5</a> |
+<a href="#/posts/7" ng-class="{ 'bg-primary' : days === '7'}">7</a> -->
+<!-- <hr /> -->
+<div ng-repeat="p in posts">
+  <!-- <p>{{p.id}}</p> -->
+  <div class="row">
+    <div class="col-md-12">
+      <single-post post="p"></single-post>
+    </div>
+  </div>
+</div>

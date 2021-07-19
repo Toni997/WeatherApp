@@ -1,36 +1,36 @@
 // CONTROLLERS
-weatherApp.controller('homeController', [
+app.controller('homeController', [
   '$scope',
   '$location',
-  'cityService',
-  function ($scope, $location, cityService) {
-    $scope.city = cityService.city;
+  'postIdService',
+  function ($scope, $location, postIdService) {
+    $scope.city = postIdService.city;
 
     $scope.$watch('city', function () {
-      cityService.city = $scope.city;
+      postIdService.city = $scope.city;
     });
     $scope.submit = function () {
-      $location.path('/forecast');
+      $location.path('/posts');
     };
   },
 ]);
 
-weatherApp.controller('forecastController', [
+app.controller('postsController', [
   '$scope',
   '$routeParams',
-  'cityService',
-  'weatherService',
-  function ($scope, $routeParams, cityService, weatherService) {
-    $scope.city = cityService.city;
+  '$http',
+  'postsService',
+  function ($scope, $routeParams, $http, postsService) {
+    // $scope.city = cityService.city;
 
     $scope.days = $routeParams.days || '2';
 
-    $scope.weatherResult = null;
-    console.log($scope.weatherResult);
+    $scope.posts = null;
 
-    weatherService.GetWeather($scope.city, $scope.days).then((res) => {
-      $scope.weatherResult = res;
-      console.log($scope.weatherResult);
+    postsService.GetPosts().then((res) => {
+      $scope.$apply(() => {
+        $scope.posts = res;
+      });
     });
 
     $scope.convertToCelsius = function (degK) {

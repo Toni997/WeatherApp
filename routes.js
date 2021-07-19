@@ -1,5 +1,5 @@
 // ROUTES
-weatherApp.config(function ($routeProvider, $locationProvider) {
+app.config(function ($routeProvider, $locationProvider) {
   $locationProvider.hashPrefix('');
 
   $routeProvider
@@ -7,12 +7,15 @@ weatherApp.config(function ($routeProvider, $locationProvider) {
       templateUrl: 'pages/home.htm',
       controller: 'homeController',
     })
-    .when('/forecast', {
-      templateUrl: 'pages/forecast.htm',
-      controller: 'forecastController',
+    .when('/posts', {
+      templateUrl: 'pages/posts.htm',
+      controller: 'postsController',
     })
-    .when('/forecast/:days', {
-      templateUrl: 'pages/forecast.htm',
-      controller: 'forecastController',
+    .when('/posts/:id', {
+      templateUrl: 'pages/posts.htm',
+      controller: 'postsController',
+    })
+    .otherwise({
+      redirectTo: '/',
     });
 });
